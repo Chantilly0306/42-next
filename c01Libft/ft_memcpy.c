@@ -18,7 +18,7 @@ void	*ft_memcpy(void *dst, void *src, int n)
 	}
 	return (dst);
 }
-
+/*
 int	main(void)
 {
     char	str1[] = "Hello World!";
@@ -27,3 +27,4 @@ int	main(void)
     ft_memcpy(str1, str2, 7);
     printf("%s\n", str1);
 }
+*/
