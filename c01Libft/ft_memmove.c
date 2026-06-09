@@ -1,33 +1,40 @@
 #include "libft.h"
 
-void	*ft_memmove(void *dst, void *src, int n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	int				i;
-	unsigned char	*d;
-	unsigned char	*s;
+	size_t				i;
+	unsigned char		*d;
+	const unsigned char	*s;
 
 	if (!dst && !src)
 		return (NULL);
 	d = (unsigned char *)dst;
-	s = (unsigned char *)src;
+	s = (const unsigned char *)src;
 	i = 0;
 	if (d > s)
-		while (--n >= 0)
-			d[n] = s[n];
+		while (len-- > 0)
+			d[len] = s[len];
 	else
-		while (i++ < n)
+	{
+		while (i < len)
+		{
 			d[i] = s[i];
+			i++;
+		}
+	}
 	return (dst);
 }
 /*
 int	main(void)
 {
 	char	str1[] = "ABCDEF";
-	char	*str2;
+	char	*str2; // CDEF
 
 	str2 = str1 + 2;
-	ft_memmove(str1, str2, 3);
-	printf("%s\n", str1);
-	//printf("%ld\n", str1 - str2);
+	ft_memmove(str2, str1, 3);
+	printf("%s\n", str2); //ABCF
+	printf("%p\n", (void *)str1);
+	printf("%p\n", (void *)str2);
+	printf("%ld\n", str2 - str1);
 }
 */
