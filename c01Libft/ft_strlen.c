@@ -1,8 +1,8 @@
 #include "libft.h"
 
-int	ft_strlen(char *s)
+size_t	ft_strlen(const char *s)
 {
-	int	len;
+	size_t	len;
 
 	len = 0;
 	while (*s++)
@@ -12,6 +12,6 @@ int	ft_strlen(char *s)
 /*
 int	main(void)
 {
-	printf("strlen: %d\n", ft_strlen("e1/0\0ji")); // =4
+	printf("strlen: %zu\n", ft_strlen("e1/0\0ji"));
 }
 */

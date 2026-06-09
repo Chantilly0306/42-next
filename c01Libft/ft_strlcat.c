@@ -1,8 +1,8 @@
 #include "libft.h"
 
-int	ft_strlen(char *s)
+size_t  ft_strlen(const char *s)
 {
-	int	len;
+	size_t	len;
 
 	len = 0;
 	while (*s++)
@@ -12,7 +12,9 @@ int	ft_strlen(char *s)
 
 int ft_strlcat(char *dst, char *src, int dstsize)
 {
-
+	int	dst_len;
+	int	src_len;
+	int	i;
 }
 
 int main(void)
