@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hsilin <hsilin@learner.42.tech>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/09 13:15:29 by hsilin            #+#    #+#             */
+/*   Updated: 2026/06/09 13:29:36 by hsilin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
@@ -19,7 +31,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	dst[dst_len + i] = '\0';
 	return (dst_len + src_len);
 }
-
+/*
 int main(void)
 {
     char	str1[] = "Hello World!";
@@ -28,3 +40,4 @@ int main(void)
     ft_strlcat(str1, str2, 20);
     printf("%s\n", str1);
 }
+*/

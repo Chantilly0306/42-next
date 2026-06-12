@@ -1,38 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsilin <hsilin@learner.42.tech>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/09 16:32:27 by hsilin            #+#    #+#             */
-/*   Updated: 2026/06/09 16:33:52 by hsilin           ###   ########.fr       */
+/*   Created: 2026/06/12 14:24:12 by hsilin            #+#    #+#             */
+/*   Updated: 2026/06/12 14:49:11 by hsilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	i;
+	char	c;
 
-	i = 0;
-	while (i < n)
+	if (n == -2147483648)
 	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		if (s1[i] == '\0')
-			break ;
-		i++;
+		write(fd, "-2147483648", 11);
+		return ;
 	}
-	return (0);
+	if (n < 0)
+	{
+		write(fd, "-", 1);
+		n = -n;
+	}
+	if (n >= 10)
+		ft_putnbr_fd(n / 10, fd);
+	c = '0' + n % 10;
+	write(fd, &c, 1);
 }
 /*
-int main()
+int	main(void)
 {
-    char *s1 = "Hello, World!";
-    char *s2 = "Hello, 42!";
-    
-    printf("%d\n", ft_strncmp(s1, s2, 8));
+	ft_putnbr_fd(-345789, 0);
 }
 */

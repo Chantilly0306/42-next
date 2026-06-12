@@ -1,38 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsilin <hsilin@learner.42.tech>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/09 16:32:27 by hsilin            #+#    #+#             */
-/*   Updated: 2026/06/09 16:33:52 by hsilin           ###   ########.fr       */
+/*   Created: 2026/06/12 17:05:46 by hsilin            #+#    #+#             */
+/*   Updated: 2026/06/12 17:57:25 by hsilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libt.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	size_t	i;
+	t_list	*buf;
 
-	i = 0;
-	while (i < n)
+	if (!lst || !del)
+		return ;
+	buf = *lst;
+	while (*lst)
 	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		if (s1[i] == '\0')
-			break ;
-		i++;
+		buf = *lst;
+		*lst = (*lst)->next;
+		del(buf->content);
+		free(buf);
 	}
-	return (0);
 }
-/*
-int main()
-{
-    char *s1 = "Hello, World!";
-    char *s2 = "Hello, 42!";
-    
-    printf("%d\n", ft_strncmp(s1, s2, 8));
-}
-*/

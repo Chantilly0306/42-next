@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsilin <hsilin@learner.42.tech>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/09 16:32:27 by hsilin            #+#    #+#             */
-/*   Updated: 2026/06/09 16:33:52 by hsilin           ###   ########.fr       */
+/*   Created: 2026/06/12 15:42:57 by hsilin            #+#    #+#             */
+/*   Updated: 2026/06/12 16:40:00 by hsilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	size_t	i;
+	t_list	*cursor;
 
-	i = 0;
-	while (i < n)
+	if (!lst || !new)
+		return ;
+	if (!*lst)
 	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		if (s1[i] == '\0')
-			break ;
-		i++;
+		*lst = new;
+		return ;
 	}
-	return (0);
+	cursor = ft_lstlast(*lst);
+	cursor->next = new;
 }
-/*
-int main()
-{
-    char *s1 = "Hello, World!";
-    char *s2 = "Hello, 42!";
-    
-    printf("%d\n", ft_strncmp(s1, s2, 8));
-}
-*/

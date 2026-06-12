@@ -1,38 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsilin <hsilin@learner.42.tech>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/09 16:32:27 by hsilin            #+#    #+#             */
-/*   Updated: 2026/06/09 16:33:52 by hsilin           ###   ########.fr       */
+/*   Created: 2026/06/12 14:21:20 by hsilin            #+#    #+#             */
+/*   Updated: 2026/06/12 14:23:35 by hsilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	ft_putendl_fd(char *s, int fd)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < n)
-	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		if (s1[i] == '\0')
-			break ;
-		i++;
-	}
-	return (0);
+	if (!s)
+		return ;
+	write(fd, s, ft_strlen(s));
+	write(fd, "\n", 1);
 }
-/*
-int main()
-{
-    char *s1 = "Hello, World!";
-    char *s2 = "Hello, 42!";
-    
-    printf("%d\n", ft_strncmp(s1, s2, 8));
-}
-*/

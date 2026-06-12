@@ -1,38 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsilin <hsilin@learner.42.tech>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/09 16:32:27 by hsilin            #+#    #+#             */
-/*   Updated: 2026/06/09 16:33:52 by hsilin           ###   ########.fr       */
+/*   Created: 2026/06/12 15:29:41 by hsilin            #+#    #+#             */
+/*   Updated: 2026/06/12 15:35:15 by hsilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_lstsize(t_list *lst)
 {
-	size_t	i;
+	int	len;
 
-	i = 0;
-	while (i < n)
+	len = 0;
+	while (lst)
 	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		if (s1[i] == '\0')
-			break ;
-		i++;
+		len++;
+		lst = lst->next;
 	}
-	return (0);
+	return (len);
 }
-/*
-int main()
-{
-    char *s1 = "Hello, World!";
-    char *s2 = "Hello, 42!";
-    
-    printf("%d\n", ft_strncmp(s1, s2, 8));
-}
-*/
