@@ -6,7 +6,7 @@
 /*   By: hsilin <hsilin@learner.42.tech>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 17:07:13 by hsilin            #+#    #+#             */
-/*   Updated: 2026/06/10 17:27:52 by hsilin           ###   ########.fr       */
+/*   Updated: 2026/06/13 15:39:41 by hsilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	size_t	index_hay;
 	size_t	len_needle;
 
-	if (!needle)
+	if (needle[0] == '\0')
 		return ((char *)haystack);
 	index_hay = 0;
 	len_needle = ft_strlen(needle);
