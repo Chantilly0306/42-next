@@ -75,7 +75,7 @@ int	ft_printf(const char *format, ...)
 	}
 	return (va_end(args), total_len);
 }
-
+/*
 int	main(void)
 {
 	int		len;
@@ -91,3 +91,4 @@ int	main(void)
 	len = ft_printf("%p", nu);
 	ft_printf("\ntotal length = %i\n", len);
 }
+*/

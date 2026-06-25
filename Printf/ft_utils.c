@@ -1,3 +1,5 @@
+#include "ft_printf.h"
+
 int	print_str(char *str)
 {
 	int	i;

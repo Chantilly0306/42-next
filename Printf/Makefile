@@ -1,4 +1,5 @@
 LIB = libftprintf.a
+
 SRCS = ft_printf.c ft_utils.c
 OBJS = ${SRCS:.c=.o}
 INCLUDES = ft_printf.h
@@ -7,7 +8,7 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra
 AR = ar rcs
 
-%.c: %.o $(INCLUDES)
+%.o: %.c $(INCLUDES)
 	${CC} ${CFLAGS} -c $< -o $@
 
 ${LIB}:	${OBJS}
