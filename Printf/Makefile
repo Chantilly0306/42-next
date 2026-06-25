@@ -1,4 +1,4 @@
-LIB = libftprintf.a
+NAME = libftprintf.a
 
 SRCS = ft_printf.c ft_utils.c
 OBJS = ${SRCS:.c=.o}
@@ -11,16 +11,16 @@ AR = ar rcs
 %.o: %.c $(INCLUDES)
 	${CC} ${CFLAGS} -c $< -o $@
 
-${LIB}:	${OBJS}
-	$(AR) ${LIB} ${OBJS}
+${NAME}: ${OBJS}
+	$(AR) ${NAME} ${OBJS}
 
-all: ${LIB}
+all: ${NAME}
 
 clean:	
 	rm -f ${OBJS}
 
 fclean:	clean;
-	rm -f ${LIB}
+	rm -f ${NAME}
 
 re:	fclean all
 
