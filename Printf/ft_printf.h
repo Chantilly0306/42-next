@@ -16,6 +16,15 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
-# include <stdio.h>
+
+int	ft_printf(const char *format, ...);
+int	parse_conversion(char format, va_list *args);
+int	is_conversion(char c);
+int	print_char(int c);
+int	print_str(char *str);
+int	print_nbr(int nbr);
+int	print_unsigned_int(unsigned int nbr);
+int	print_hex(unsigned long nbr, char *base);
+int	print_ptr(void *ptr);
 
 #endif
