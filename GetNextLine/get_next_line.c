@@ -1,5 +1,11 @@
 #include "get_next_line.h"
 
+void    clear_all(char **str)
+{
+    free(*str);
+    *str = NULL;
+}
+
 char    *get_next_line(int fd)
 {
     int         bytes_read;
@@ -13,29 +19,18 @@ char    *get_next_line(int fd)
     if (!buffer)
         return (NULL);
     bytes_read = 1;
-    while(!ft_strchr(storage, "\n") && bytes_read != 0)
+    while(!ft_strchr(storage, '\n') && bytes_read != 0)
     {
         bytes_read = read(fd, buffer, BUFFER_SIZE);
         if (bytes_read == -1)
-        {
-            free(buffer);
-            free(storage);
-            storage = NULL;
-            return (NULL)
-        }
+            return (clear_all(&buffer), clear_all(&storage), NULL);
         buffer[bytes_read] = '\0';
         storage = ft_strjoin(storage, buffer);
     }
     free(buffer);
-
-    if (!storage || *storage == "\0")
-    {
-        free(storage);
-        storage = NULL;
-        return (NULL);
-    }
+    if (!storage || *storage == '\0')
+        return (clear_all(&storage), NULL);
     line = ft_extract_line(storage);
-    storage = ft_clean_storage(storage);
-
+    storage = ft_clean_line(storage);
     return (line);
 }
