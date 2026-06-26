@@ -76,27 +76,6 @@ char	*ft_extract_line(char *storage)
 
 char	*ft_clean_line(char *storage)
 {
-	char	*residual;
-	char	*new_res;
-	int		len;
-
-	residual = ft_strchr(storage, '\n');
-	if (!residual)
-		return (NULL);
-	len = ft_strlen(residual);
-	if (len <= 1)
-		return (NULL);
-	new_res = malloc(sizeof(char) * len);
-	if (!new_res)
-		return (NULL);
-	new_res[--len] = '\0';
-	while (--len >= 0)
-		new_res[len] = residual[len + 1];
-	free(storage);
-	return (new_res);
-}
-char	*ft_clean_line(char *storage)
-{
 	char	*new_res;
 	int		i;
 	int		j;
@@ -105,18 +84,14 @@ char	*ft_clean_line(char *storage)
 	while (storage[i] && storage[i] != '\n')
 		i++;
 	if (!storage[i])
-	{
-		free(storage);
-		return (NULL);
-	}
+		return (free(storage), NULL);
 	new_res = malloc(sizeof(char) * (ft_strlen(storage) - i));
 	if (!new_res)
 		return (free(storage), NULL);
-	i++; // 跳過 '\n'
+	i++;
 	j = 0;
 	while (storage[i])
 		new_res[j++] = storage[i++];
 	new_res[j] = '\0';
-	free(storage);
-	return (new_res);
+	return (free(storage), new_res);
 }

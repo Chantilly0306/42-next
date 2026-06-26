@@ -34,3 +34,49 @@ char    *get_next_line(int fd)
     storage = ft_clean_line(storage);
     return (line);
 }
+
+/*
+void	test_file(char *filename)
+{
+	int		fd;
+	char	*line;
+	int		line_count;
+
+	printf("\n--- Read file: %s ---\n", filename);
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+	{
+		perror("Fail to open file");
+		return ;
+	}
+	line_count = 1;
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		printf("line %d: %s", line_count++, line);
+		free(line);
+	}
+	close(fd);
+}
+
+void	test_stdin(void)
+{
+	char	*line;
+	int		line_count;
+
+	printf("\n--- Type some words and enter. Ctrl+D for exit ---\n");
+	line_count = 1;
+	while ((line = get_next_line(0)) != NULL)
+	{
+		printf("line %d: %s", line_count++, line);
+		free(line);
+	}
+}
+
+int	main(void)
+{
+	test_file("README.md");
+	// test_file("does_not_exist.txt");
+	// test_stdin();
+	return (0);
+}
+*/
