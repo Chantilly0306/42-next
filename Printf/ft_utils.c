@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-int	print_str(char *str)
+int	ft_print_str(char *str)
 {
 	int	i;
 
@@ -12,7 +12,7 @@ int	print_str(char *str)
 	return (i);
 }
 
-int	print_nbr(int nbr)
+int	ft_print_nbr(int nbr)
 {
 	int		len;
 	char	c;
@@ -26,44 +26,44 @@ int	print_nbr(int nbr)
 		nbr = -nbr;
 	}
 	if (nbr >= 10)
-		len += print_nbr(nbr / 10);
+		len += ft_print_nbr(nbr / 10);
 	c = '0' + nbr % 10;
 	len += write(1, &c, 1);
 	return (len);
 }
 
-int	print_unsigned_int(unsigned int nbr)
+int	ft_print_unsigned_int(unsigned int nbr)
 {
 	int		len;
 	char	c;
 
 	len = 0;
 	if (nbr >= 10)
-		len += print_unsigned_int(nbr / 10);
+		len += ft_print_unsigned_int(nbr / 10);
 	c = '0' + nbr % 10;
 	len += write(1, &c, 1);
 	return (len);
 }
 
-int	print_hex(unsigned long nbr, char *base)
+int	ft_print_hex(unsigned long nbr, char *base)
 {
 	int	len;
 
 	len = 0;
 	if (nbr >= 16)
-		len += print_hex(nbr / 16, base);
+		len += ft_print_hex(nbr / 16, base);
 	len += write(1, &base[nbr % 16], 1);
 	return (len);
 }
 
-int	print_ptr(void *ptr)
+int	ft_print_ptr(void *ptr)
 {
 	int	len;
 
 	if (!ptr)
-		return (write(1, "(nil)", 5));
+		return (write(1, "0x0", 3));
 	write(1, "0x", 2);
 	len = 2;
-	len += print_hex((unsigned long)ptr, "0123456789abcdef");
+	len += ft_print_hex((unsigned long)ptr, "0123456789abcdef");
 	return (len);
 }

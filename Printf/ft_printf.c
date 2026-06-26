@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	print_char(int c)
+int	ft_print_char(int c)
 {
 	write(1, &c, 1);
 	return (1);
@@ -24,19 +24,19 @@ int	parse_conversion(char format, va_list *args)
 
 	len = 0;
 	if (format == 'c')
-		len += print_char(va_arg(*args, int));
+		len += ft_print_char(va_arg(*args, int));
 	else if (format == 's')
-		len += print_str(va_arg(*args, char *));
+		len += ft_print_str(va_arg(*args, char *));
 	else if (format == 'p')
-		len += print_ptr(va_arg(*args, void *));
+		len += ft_print_ptr(va_arg(*args, void *));
 	else if (format == 'd' || format == 'i')
-		len += print_nbr(va_arg(*args, int));
+		len += ft_print_nbr(va_arg(*args, int));
 	else if (format == 'u')
-		len += print_unsigned_int(va_arg(*args, unsigned int));
+		len += ft_print_unsigned_int(va_arg(*args, unsigned int));
 	else if (format == 'x')
-		len += print_hex(va_arg(*args, unsigned int), "0123456789abcdef");
+		len += ft_print_hex(va_arg(*args, unsigned int), "0123456789abcdef");
 	else if (format == 'X')
-		len += print_hex(va_arg(*args, unsigned int), "0123456789ABCDEF");
+		len += ft_print_hex(va_arg(*args, unsigned int), "0123456789ABCDEF");
 	else if (format == '%')
 		len += write(1, "%", 1);
 	return (len);
