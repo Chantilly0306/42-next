@@ -8,6 +8,33 @@ typedef struct      s_list
 
 void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(void *, void *))
 {
+    t_list  *cursor;
+    t_list  *tmp;
+
+    if (!begin_list || !cmp)
+        return ;
+    cursor = *begin_list;
+    while (cursor && !cmp(cursor->data, data_ref))
+    {
+        *begin_list = cursor->next;
+        free(cursor);
+        cursor = *begin_list;
+    }
+    while (cursor && cursor->next)
+    {
+        if (!cmp(cursor->next->data, data_ref))
+        {
+            tmp = cursor->next;
+            cursor->next = tmp->next;
+            free(cursor->next);
+        }
+        else
+            cursor->next;
+    }
+}
+
+void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(void *, void *))
+{
 	t_list	*cursor;
 	t_list	*prev;
 
